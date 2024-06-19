@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StartScreenView: View {
+    @Binding var isFadingOut: Bool
+    var showNextView: () -> Void
     
     var body: some View {
         ZStack {
@@ -28,20 +30,16 @@ struct StartScreenView: View {
                 Spacer()
                 
                 Button(action: {
-                    
-                },
-                       label: {
+                    showNextView()
+                }) {
                     Text("INICIAR ")
                         .foregroundStyle(.white)
                         .font(.custom("Dark Distance", size: 44))
                         .shadow(radius: 10)
                 }
-                )
+                
             } .frame(width: 274, height: 523)
         } .ignoresSafeArea()
     }
 }
 
-#Preview {
-    StartScreenView()
-}

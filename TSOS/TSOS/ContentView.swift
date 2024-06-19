@@ -7,13 +7,50 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-    
+    @State private var currentView = 1
+    @State private var isFadingOut = false
     
     var body: some View {
-        VStack {
-            GameSceneView(sceneImage: "station1", fullText: "Droga! Perdi o último metrô...")
+        ZStack {
+            if currentView == 1 {
+                StartScreenView(isFadingOut: $isFadingOut, showNextView: showNextView)
+                    .opacity(isFadingOut ? 0 : 1)
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 1), value: isFadingOut)
+            } else if currentView == 2 {
+                WarningView()
+                    .opacity(isFadingOut ? 0 : 1)
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 1), value: isFadingOut)
+            } else if currentView == 3 {
+                RecommendView()
+            }
+        }
+        .background(.black)
+    }
+    
+    private func showNextView() {
+        withAnimation {
+            isFadingOut = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            withAnimation {
+                currentView += 1
+                isFadingOut = false
+            }
+            if currentView < 3 {
+                transitionToNextView(after: 4)
+            }
+        }
+    }
+    
+    private func transitionToNextView(after delay: TimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            withAnimation {
+                isFadingOut = true
+            }
+            showNextView()
         }
     }
 }
@@ -21,3 +58,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
