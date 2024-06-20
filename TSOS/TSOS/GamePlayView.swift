@@ -15,7 +15,10 @@ struct GamePlayView: View {
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),
             .walk(text: "Sair", img: "exit1", imgicon: "walkingexit"),
             .miniGames(gameType: .locker(img: "exitlocked")),
-            .dialogue(text: "Era só o que me faltava. Não\nencontro nenhuma saída aberta.", img: "exit1")
+            .dialogue(text: "Era só o que me faltava. Não\nencontro nenhuma saída aberta.", img: "exit1"),
+            .dialogue(text: "Não é possível que estou presa.\nPreciso achar alguém para me\najudar a sair.", img: "exit1"),
+            .walk(text: "Sair", img: "exit1", imgicon: "walkingright"),
+            .empty(img: "lightsoff1")
         ])
     } 
 }

@@ -49,50 +49,53 @@ struct LockerScene: View {
     
     func prepareHaptics() {
         do {
-            self.engine = try CHHapticEngine()
+            engine = try CHHapticEngine()
             try engine?.start()
         } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
+            print("Haptic engine Start Error: \(error.localizedDescription)")
         }
     }
-
+    
     func complexSuccess() {
-           let newImageName = "exitlockedclick"
-           updateBackgroundImage(newImageName)
-           
-           guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-               scheduleImageUpdate()
-               return
-           }
-           
-           var events = [CHHapticEvent]()
-           
-           let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
-           let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
-           
-           let event1 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
-           let event2 = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.2)
-           
-           events.append(event1)
-           events.append(event2)
-           
-           do {
-               let pattern = try CHHapticPattern(events: events, parameters: [])
-               let player = try engine?.makePlayer(with: pattern)
-               try player?.start(atTime: 0)
-               scheduleImageUpdate()
-           } catch {
-               scheduleImageUpdate()
-           }
-       }
-       
-       func scheduleImageUpdate() {
-           DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-               let finalImageName = "exitlocked"
-               updateBackgroundImage(finalImageName)
-               DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                   goToNextScene()
-               }
-           }
-       }
-   }
+        let newImageName = "exitlockedclick"
+        updateBackgroundImage(newImageName)
+        
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            scheduleImageUpdate()
+            return
+        }
+        
+        var events = [CHHapticEvent]()
+        
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
+        
+        let event1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.13)
+        let pause = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 0.17)
+        let event2 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0.19, duration: 0.13)
+        
+        events.append(event1)
+        events.append(pause)
+        events.append(event2)
+        
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+            scheduleImageUpdate()
+        } catch {
+            print("Failed to play haptic: \(error.localizedDescription)")
+            scheduleImageUpdate()
+        }
+    }
+    
+    func scheduleImageUpdate() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            let finalImageName = "exitlocked"
+            updateBackgroundImage(finalImageName)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                goToNextScene()
+            }
+        }
+    }
+}
