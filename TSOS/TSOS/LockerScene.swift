@@ -13,13 +13,15 @@ struct LockerScene: View {
     let updateBackgroundImage: (String) -> Void
     var goToNextScene: () -> Void
     @State private var engine: CHHapticEngine?
-    
+    @State private var hasTapped = false
     
     var body: some View {
         VStack {
             Image("locker")
                 .onTapGesture {
-                    complexSuccess()
+                    if !hasTapped {  
+                        complexSuccess()
+                    }
                 }
             
             Spacer()
@@ -57,6 +59,8 @@ struct LockerScene: View {
     }
     
     func complexSuccess() {
+        hasTapped = true
+        
         let newImageName = "exitlockedclick"
         updateBackgroundImage(newImageName)
         

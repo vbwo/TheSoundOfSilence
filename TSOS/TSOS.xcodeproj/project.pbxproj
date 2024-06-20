@@ -14,6 +14,7 @@
 		6A12F5232C2367E20084EA7C /* DialogueScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5222C2367E20084EA7C /* DialogueScene.swift */; };
 		6A12F5252C2367EC0084EA7C /* WalkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5242C2367EC0084EA7C /* WalkScene.swift */; };
 		6A12F5272C2367FA0084EA7C /* LockerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5262C2367FA0084EA7C /* LockerScene.swift */; };
+		6A12F5292C2450BD0084EA7C /* EmptyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5282C2450BD0084EA7C /* EmptyScene.swift */; };
 		6A464C4A2C1C572C0051C3C7 /* TSOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C492C1C572C0051C3C7 /* TSOSApp.swift */; };
 		6A464C4C2C1C572C0051C3C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C4B2C1C572C0051C3C7 /* ContentView.swift */; };
 		6A464C4E2C1C572E0051C3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A464C4D2C1C572E0051C3C7 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		6A12F5222C2367E20084EA7C /* DialogueScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueScene.swift; sourceTree = "<group>"; };
 		6A12F5242C2367EC0084EA7C /* WalkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkScene.swift; sourceTree = "<group>"; };
 		6A12F5262C2367FA0084EA7C /* LockerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerScene.swift; sourceTree = "<group>"; };
+		6A12F5282C2450BD0084EA7C /* EmptyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScene.swift; sourceTree = "<group>"; };
 		6A464C462C1C572C0051C3C7 /* TSOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A464C492C1C572C0051C3C7 /* TSOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSOSApp.swift; sourceTree = "<group>"; };
 		6A464C4B2C1C572C0051C3C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				6A464C4B2C1C572C0051C3C7 /* ContentView.swift */,
 				6A464C572C1C58090051C3C7 /* StartScreenView.swift */,
 				6A12F5042C22FE480084EA7C /* GameSceneView.swift */,
+				6A12F5282C2450BD0084EA7C /* EmptyScene.swift */,
 				6A464C652C1CEF420051C3C7 /* WarningView.swift */,
 				6A12F5002C22FA490084EA7C /* GamePlayView.swift */,
 				6A464C6B2C1D14700051C3C7 /* RecommendView.swift */,
@@ -187,6 +190,7 @@
 				6A12F5012C22FA490084EA7C /* GamePlayView.swift in Sources */,
 				6A12F5272C2367FA0084EA7C /* LockerScene.swift in Sources */,
 				6A464C4C2C1C572C0051C3C7 /* ContentView.swift in Sources */,
+				6A12F5292C2450BD0084EA7C /* EmptyScene.swift in Sources */,
 				6A12F5232C2367E20084EA7C /* DialogueScene.swift in Sources */,
 				6A464C4A2C1C572C0051C3C7 /* TSOSApp.swift in Sources */,
 			);

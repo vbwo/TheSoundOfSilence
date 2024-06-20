@@ -61,8 +61,11 @@ struct GameSceneView: View {
                     )
                     
                 case .empty(let img):
-                    Image(img)
-                        .ignoresSafeArea()
+                    EmptyScene(
+                        img: img,
+                        goToNextScene: goToNextScene,
+                        updateBackgroundImage: updateBackgroundImage
+                    )
                     
                 case .miniGames(let gameType):
                     switch gameType {
@@ -106,7 +109,8 @@ struct GameSceneView: View {
     func goToNextScene() {
         if currentSceneIndex < scenes.count - 1 {
             currentSceneIndex += 1
-            switch scenes[currentSceneIndex] {
+            let nextScene = scenes[currentSceneIndex]
+            switch nextScene {
             case .dialogue(let text, let img):
                 showText(text)
                 updateBackgroundImage(img)
