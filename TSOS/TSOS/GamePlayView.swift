@@ -36,7 +36,19 @@ struct GamePlayView: View {
             .dialogue(text: "Oh, escutei algo vindo dos\ntrilhos!", img: "station2sound"),
             .dialogue(text: "Alguém deve estar por lá...", img: "station2sound"),
             .dialogue(text: "Vou verificar.", img: "station2sound"),
-            
+            .walk(text: "Andar", img: "station2sound", imgicon: "walkingleft"),
+            .dialogue(text: "[Tem algo ali nos trilhos...\nDeixa eu me aproximar um pouco.]", img: "station2sound"),
+            .empty(img: "feet"),
+            .empty(img: "legs"),
+            .dialogue(text: "!!!!!!!!!!??????????", img: "legs"),
+            .dialogue(text: "O que... é ISSO?!", img: "bodyzoom"),
+            .dialogue(text: "[Me sinto enjoada, paralisada...\nnão sei o que está acontecendo,\nnem o que fazer.]", img: "bodyzoom"),
+            .dialogue(text: "É um corpo... ou metade dele.", img: "bodyzoom"),
+            .dialogue(text: "Parece recente e sofrido.", img: "bodyzoom"),
+            .dialogue(text: "Não sei o que fazer, não estou\nme sentindo bem. Tenho que ligar\npara a polícia.", img: "bodyzoom"),
+            .dialogue(text: "[Na hora que peguei o celular,\nvi uma sombra ao chão...]", img: "stationphone"),
+            .dialogue(text: "[Cheguei mais perto para\nenxergar melhor.]", img: "stationphone"),
+            .dialogue(text: "...", img: "black")
         ])
     }
 }

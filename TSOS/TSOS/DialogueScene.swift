@@ -72,6 +72,11 @@ struct DialogueScene: View {
             } else {
                 stopHapticLoop()
             }
+            
+            if img == "feet" {
+                prepareHaptics()
+                
+            }
         }
         .onDisappear {
             stopHapticLoop()
@@ -94,7 +99,12 @@ struct DialogueScene: View {
     func startHapticLoop() {
         stopHapticLoop()
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
-            tekeHaptics()
+            if img == "station2sound" {
+                tekeHaptics()
+            }
+            if img == "feet" {
+                
+            }
         }
     }
     
