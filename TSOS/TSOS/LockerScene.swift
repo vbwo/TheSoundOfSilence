@@ -71,8 +71,8 @@ struct LockerScene: View {
         
         var events = [CHHapticEvent]()
         
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
         
         let event1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.13)
         let pause = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 0.17)

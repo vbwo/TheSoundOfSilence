@@ -24,15 +24,24 @@ struct GamePlayView: View {
             .dialogue(text: "O que está acontecendo?", img: "lightsoff2"),
             .empty(img: "station1"),
             .dialogue(text: "Ok, isso foi esquisito...", img: "station1"),
-            .dialogue(text: "Talvez seja um bom sinal… Alguém\n deve estar trabalhando por aqui\n ainda.", img: "station1"),
+            .dialogue(text: "Talvez seja um bom sinal… Alguém\ndeve estar trabalhando por aqui\nainda.", img: "station1"),
             .dialogue(text: "Mas não adianta ficar imaginando\ncoisas. Vou andar um pouco para\nprocurar.", img: "station1"),
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),
             .dialogue(text: "[Devo gritar para chamar\nalguém?]", img: "station2"),
+            
+            //----------------------//
+            //ADD PRIMEIRO MINIGAME//
+            //---------------------//
+            
+            .dialogue(text: "Oh, escutei algo vindo dos\ntrilhos!", img: "station2sound"),
+            .dialogue(text: "Alguém deve estar por lá...", img: "station2sound"),
+            .dialogue(text: "Vou verificar.", img: "station2sound"),
+            
         ])
-    } 
+    }
 }
 
-#Preview { 
+#Preview {
     GamePlayView()
 }
 
