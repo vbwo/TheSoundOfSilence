@@ -43,7 +43,7 @@ struct DialogueScene: View {
                     .onAppear {
                         showText(text)
                     }
-                
+          
                 Spacer()
                 
                 if showArrow {
@@ -64,18 +64,12 @@ struct DialogueScene: View {
         .onAppear {
             updateBackgroundImage(img)
         }
-        
         .onChange(of: img) {
             if img == "station2sound" {
                 prepareHaptics()
                 startHapticLoop()
             } else {
                 stopHapticLoop()
-            }
-            
-            if img == "feet" {
-                prepareHaptics()
-                
             }
         }
         .onDisappear {
@@ -101,9 +95,6 @@ struct DialogueScene: View {
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
             if img == "station2sound" {
                 tekeHaptics()
-            }
-            if img == "feet" {
-                
             }
         }
     }
