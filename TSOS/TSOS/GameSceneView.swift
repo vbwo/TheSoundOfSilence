@@ -25,6 +25,7 @@ struct GameSceneView: View {
     @State private var arrowOffset: CGFloat = 0
     @State private var currentSceneIndex: Int = 0
     @State private var backgroundImg = ""
+    @State private var isShowingText = false
     
     let scenes: [SceneType]
     
@@ -45,6 +46,7 @@ struct GameSceneView: View {
                         displayedText: $displayedText,
                         showArrow: $showArrow,
                         arrowOffset: $arrowOffset,
+                        isShowingText: $isShowingText,
                         showText: showText,
                         animateArrow: animateArrow,
                         goToNextScene: goToNextScene,
@@ -87,15 +89,23 @@ struct GameSceneView: View {
         displayedText = ""
         currentIndex = 0
         showArrow = false
+        isShowingText = true
         
         Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
             if currentIndex < text.count {
-                let index = text.index(text.startIndex, offsetBy: currentIndex)
-                displayedText.append(text[index])
-                currentIndex += 1
+                if !isShowingText {
+                    displayedText = text
+                    timer.invalidate()
+                    showArrow = true
+                } else {
+                    let index = text.index(text.startIndex, offsetBy: currentIndex)
+                    displayedText.append(text[index])
+                    currentIndex += 1
+                }
             } else {
                 timer.invalidate()
                 showArrow = true
+                isShowingText = false
             }
         }
     }

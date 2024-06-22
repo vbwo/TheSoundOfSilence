@@ -14,6 +14,7 @@ struct DialogueScene: View {
     @Binding var displayedText: String
     @Binding var showArrow: Bool
     @Binding var arrowOffset: CGFloat
+    @Binding var isShowingText: Bool
     var showText: (String) -> Void
     var animateArrow: () -> Void
     var goToNextScene: () -> Void
@@ -28,7 +29,9 @@ struct DialogueScene: View {
                 .frame(width: 353, height: 128, alignment: .leading)
                 .border(Color.white, width: 3)
                 .onTapGesture {
-                    if showArrow {
+                    if isShowingText {
+                        isShowingText = false
+                    } else if showArrow {
                         goToNextScene()
                     }
                 }
@@ -43,7 +46,14 @@ struct DialogueScene: View {
                     .onAppear {
                         showText(text)
                     }
-          
+                    .onTapGesture {
+                        if isShowingText {
+                            isShowingText = false
+                        } else if showArrow {
+                            goToNextScene()
+                        }
+                    }
+                
                 Spacer()
                 
                 if showArrow {
@@ -51,8 +61,8 @@ struct DialogueScene: View {
                         .foregroundColor(.white)
                         .offset(x: arrowOffset)
                         .frame(height: 20)
-                        .padding(.leading, 310)
-                        .padding(.bottom, 12)
+                        .padding(.leading, 308)
+                        .padding(.bottom, 14)
                         .onAppear {
                             animateArrow()
                         }
