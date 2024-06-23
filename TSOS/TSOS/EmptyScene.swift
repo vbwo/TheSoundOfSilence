@@ -26,7 +26,7 @@ struct EmptyScene: View {
                         }
                     }
                     if img == "jump1" {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             goToNextScene()
                             updateBackgroundImage(img)
                         }

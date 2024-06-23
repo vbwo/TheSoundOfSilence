@@ -111,7 +111,7 @@ struct ScreamGameView: View {
     
     func checkPosition() {
         if arrowPosition <= 0.25 {
-            print("Acertou!")
+            goToNextScene()
         } else {
             errorCount += 1
             if errorCount >= 2 {
