@@ -20,7 +20,6 @@ struct MiniGameDoorView: View {
     var body: some View {
         VStack {
             if showJumpScare {
-                // Jump scare view
                 Image("jumpSkeleton")
                     .resizable()
                     .scaledToFit()
@@ -30,15 +29,13 @@ struct MiniGameDoorView: View {
             } else {
                 VStack (alignment: .center, spacing: 24.0) {
                     ZStack {
-                        // Barra com degradê
                         Rectangle()
                             .fill(LinearGradient(
-                                gradient: Gradient(colors: [.green, .yellow, .orange, .red]),
+                                gradient: Gradient(colors: [.red, .orange, .yellow, .green, .yellow, .orange, .red]),
                                 startPoint: .leading,
                                 endPoint: .trailing))
                             .frame(width: 300, height: 50)
                         
-                        // Seta que se move com contorno
                         ZStack {
                             ArrowShape2()
                                 .stroke(Color.white, lineWidth: 5)
@@ -47,20 +44,16 @@ struct MiniGameDoorView: View {
                                 .fill(Color.redArrow)
                                 .frame(width: 20, height: 20)
                         }
-                        .offset(x: (arrowPosition - 0.5) * 300) // Ajustar posição da seta
-                        .offset(y: 35) // Ajustar posição vertical da seta abaixo da barra
-                        //.offset(x: -35) // Colocar a seta à esquerda da barra
-                    } //Barra degradê colorida
+                        .offset(x: (arrowPosition - 0.5) * 300)
+                        .offset(y: 35)
+                    }
                     .padding()
                     
-                    
-                    // Botão para parar a seta
                     Button(action: {
                         stopAnimation()
                         checkPosition()
                     }) {
                         ZStack {
-                            // Barra com degradê
                             Rectangle()
                                 .fill(LinearGradient(
                                     gradient: Gradient(colors: [.gray, .white, .gray]),
@@ -71,7 +64,7 @@ struct MiniGameDoorView: View {
                             Text("Segure a porta")
                                 .foregroundStyle(.black)
                                 .font(.custom("Dark Distance", size: 18))
-                        } //Botão "segure a porta"
+                        }
                     }
                 }
             }
@@ -109,21 +102,16 @@ struct MiniGameDoorView: View {
     }
     
     func checkPosition() {
-        // Verifica se a seta parou na zona verde (assumindo que a zona verde é a primeira 1/4 parte da barra)
         if arrowPosition <= 0.25 {
-            // Acertou, continuar o jogo
             print("Acertou!")
         } else {
-            // Errou
             errorCount += 1
             if errorCount >= 2 {
-                // Mostra o jumpscare
                 showJumpScare = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     resetGame()
                 }
             } else {
-                // Reinicia o minigame após o primeiro erro
                 arrowPosition = 0.5
                 startAnimation()
             }

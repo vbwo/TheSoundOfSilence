@@ -19,9 +19,23 @@ struct EmptyScene: View {
             Image(img)
                 .ignoresSafeArea()
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                    if img == "feet" {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            goToNextScene()
+                            updateBackgroundImage(img)
+                        }
+                    }
+                    if img == "jump1" {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            goToNextScene()
+                            updateBackgroundImage(img)
+                        }
+                    }
+                    else { 
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                         goToNextScene()
                         updateBackgroundImage(img)
+                    }
                     }
                 }
                 .onChange(of: img){
@@ -45,7 +59,7 @@ struct EmptyScene: View {
             print("Haptic engine Start Error: \(error.localizedDescription)")
         }
     }
-
+    
     func lightsOffGHaptic() {
         guard let engine = engine, CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             return
@@ -57,7 +71,7 @@ struct EmptyScene: View {
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
         
         let event1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 3)
-       
+        
         
         events.append(event1)
         

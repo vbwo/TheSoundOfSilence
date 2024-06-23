@@ -28,11 +28,13 @@ struct GamePlayView: View {
             .dialogue(text: "Mas não adianta ficar imaginando\ncoisas. Vou andar um pouco para\nprocurar.", img: "station1"),
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),
             .dialogue(text: "[Devo gritar para chamar\nalguém?]", img: "station2"),
-            
-            //-------------------//
-            //ADD SCREAM MINIGAME//
-            //------------------//
-            
+            .miniGames(gameType: .scream(img: "station2game")),
+            .dialogue(text: "OOOI? Tem alguém aqui?", img: "station2"),
+            .dialogue(text: "[Sem resposta...]", img: "station2"),
+            .dialogue(text: "Vou continuar tentando.", img: "station2"),
+            .miniGames(gameType: .scream(img: "station2game")),
+            .dialogue(text: "BOA NOITE! Alguém pode me\najudar? Estou presa aqui!", img: "station2"),
+            .empty(img: "jump1"),
             .dialogue(text: "Oh, escutei algo vindo dos\ntrilhos!", img: "station2sound"),
             .dialogue(text: "Alguém deve estar por lá...", img: "station2sound"),
             .dialogue(text: "Vou verificar.", img: "station2sound"),

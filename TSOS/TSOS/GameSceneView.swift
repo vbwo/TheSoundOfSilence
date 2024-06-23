@@ -15,6 +15,7 @@ enum SceneType {
     
     enum MiniGameType {
         case locker(img: String)
+        case scream(img: String)
     }
 }
 
@@ -36,6 +37,7 @@ struct GameSceneView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                
                 Spacer()
                 
                 switch scenes[currentSceneIndex] {
@@ -73,6 +75,12 @@ struct GameSceneView: View {
                     switch gameType {
                     case .locker(let img):
                         LockerScene(
+                            img: img,
+                            updateBackgroundImage: updateBackgroundImage,
+                            goToNextScene: goToNextScene
+                        )
+                    case .scream(let img):
+                        ScreamGameView(
                             img: img,
                             updateBackgroundImage: updateBackgroundImage,
                             goToNextScene: goToNextScene
@@ -132,6 +140,8 @@ struct GameSceneView: View {
             case .miniGames(gameType: let gameType):
                 switch gameType {
                 case .locker(let img):
+                    updateBackgroundImage(img)
+                case .scream(let img):
                     updateBackgroundImage(img)
                 }
             }
