@@ -22,8 +22,9 @@ struct MiniGameDoorView: View {
             if showJumpScare {
                 Image("jumpSkeleton")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
                     .ignoresSafeArea()
                     
             } else {
