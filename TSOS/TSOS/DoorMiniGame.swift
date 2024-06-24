@@ -24,8 +24,9 @@ struct DoorGameView: View {
             if showJumpScare {
                 Image("jumpSkeleton")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
                     .ignoresSafeArea()
                 
             } else {
@@ -152,7 +153,7 @@ struct DoorGameView: View {
             }
         } else {
             errorCount += 1
-            if errorCount >= 3 {
+            if errorCount >= 2 {
                 showJumpScare = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     resetGame()
