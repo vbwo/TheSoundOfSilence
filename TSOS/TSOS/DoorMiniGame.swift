@@ -76,7 +76,7 @@ struct MiniGameDoorView: View {
     
     func startAnimation() {
         isAnimating = true
-        timer = Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.007, repeats: true) { _ in
             withAnimation(.linear(duration: 0.01)) {
                 if movingUp {
                     arrowPosition -= 0.01
@@ -102,8 +102,8 @@ struct MiniGameDoorView: View {
     }
     
     func checkPosition() {
-        let greenZoneStart: CGFloat = 0.25
-                let greenZoneEnd: CGFloat = 0.75
+        let greenZoneStart: CGFloat = 0.35
+                let greenZoneEnd: CGFloat = 0.65
                 
                 if arrowPosition >= greenZoneStart && arrowPosition <= greenZoneEnd {
                     print("Acertou!")
