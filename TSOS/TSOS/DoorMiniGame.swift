@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-import SwiftUI
-
-struct MiniGameDoorView: View {
+struct DoorGameView: View {
     @State private var arrowPosition: CGFloat = 0.5
     @State private var isAnimating = false
     @State private var movingUp = true
     @State private var timer: Timer?
     @State private var errorCount = 0
+    @State private var successCount = 0
     @State private var showJumpScare = false
+    let img: String
+    let updateBackgroundImage: (String) -> Void
+    var goToNextScene: () -> Void
     
     var body: some View {
         VStack {
@@ -25,9 +27,25 @@ struct MiniGameDoorView: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
-                    
+                
             } else {
                 VStack (alignment: .center, spacing: 24.0) {
+                    
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.black.opacity(0.75))
+                            .frame(width: 311, height: 70, alignment: .leading)
+                            .border(Color.white, width: 3)
+                        Text("Aperte o botão quando a\nseta chegar ao verde para\nsegurar a porta.")
+                            .font(Font.custom("PressStart2P-Regular", size: 10))
+                            .foregroundColor(.white)
+                            .lineSpacing(8)
+                            .multilineTextAlignment(.center)
+                        
+                    }
+                    
+                    Spacer()
+                    
                     ZStack {
                         Rectangle()
                             .fill(LinearGradient(
@@ -35,17 +53,20 @@ struct MiniGameDoorView: View {
                                 startPoint: .leading,
                                 endPoint: .trailing))
                             .frame(width: 300, height: 50)
+                            .border(Color.white, width: 3)
                         
                         ZStack {
                             ArrowShape2()
-                                .stroke(Color.white, lineWidth: 5)
+                                .stroke(Color.white, lineWidth: 4)
                                 .frame(width: 20, height: 20)
+                                .cornerRadius(4)
                             ArrowShape2()
                                 .fill(Color.redArrow)
-                                .frame(width: 20, height: 20)
+                                .frame(width: 16, height: 16)
+                                .cornerRadius(4)
                         }
                         .offset(x: (arrowPosition - 0.5) * 300)
-                        .offset(y: 35)
+                        .offset(y: 25)
                     }
                     .padding()
                     
@@ -61,16 +82,26 @@ struct MiniGameDoorView: View {
                                     endPoint: .trailing))
                                 .frame(width: 193, height: 52)
                             
-                            Text("Segure a porta")
+                            Text("SEGURE A PORTA ")
                                 .foregroundStyle(.black)
                                 .font(.custom("Dark Distance", size: 18))
                         }
                     }
-                }
+                    
+                    Text("\(successCount)/3")
+                        .font(Font.custom("PressStart2P-Regular", size: 24))
+                        .foregroundColor(.white)
+                    
+                } .frame(width: 327, height: 401)
+                    .padding(.top, 128)
+                
+                Spacer()
+                
             }
         }
         .onAppear {
             startAnimation()
+            updateBackgroundImage(img)
         }
     }
     
@@ -103,10 +134,18 @@ struct MiniGameDoorView: View {
     
     func checkPosition() {
         let greenZoneStart: CGFloat = 0.35
-                let greenZoneEnd: CGFloat = 0.65
-                
-                if arrowPosition >= greenZoneStart && arrowPosition <= greenZoneEnd {
-                    print("Acertou!")
+        let greenZoneEnd: CGFloat = 0.65
+        
+        if arrowPosition >= greenZoneStart && arrowPosition <= greenZoneEnd {
+            successCount += 1
+            if successCount >= 3 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    goToNextScene()
+                }
+            } else {
+                arrowPosition = 0.5
+                startAnimation()
+            }
         } else {
             errorCount += 1
             if errorCount >= 3 {
@@ -124,6 +163,7 @@ struct MiniGameDoorView: View {
     func resetGame() {
         showJumpScare = false
         errorCount = 0
+        successCount = 0 
         arrowPosition = 0.5
         movingUp = true
         startAnimation()
@@ -139,9 +179,4 @@ struct ArrowShape2: Shape {
         path.closeSubpath()
         return path
     }
-}
-
-
-#Preview {
-    MiniGameDoorView()
 }

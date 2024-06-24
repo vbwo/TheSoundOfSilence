@@ -14,7 +14,7 @@ struct ScreamGameView: View {
     var body: some View {
         
         VStack {
-            
+        
             ZStack {
                 Rectangle()
                     .fill(Color.black.opacity(0.75))
