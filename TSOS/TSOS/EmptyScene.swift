@@ -51,6 +51,8 @@ struct EmptyScene: View {
         }
     }
     
+    //MARK: Functions
+    
     func prepareHaptics() {
         do {
             engine = try CHHapticEngine()

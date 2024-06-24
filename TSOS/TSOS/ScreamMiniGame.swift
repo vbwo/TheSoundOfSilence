@@ -23,7 +23,7 @@ struct ScreamGameView: View {
                 Text("Pressione o botão abaixo\nquando a seta atingir o\nverde para poder gritar!")
                     .font(Font.custom("PressStart2P-Regular", size: 10))
                     .foregroundColor(.white)
-                    .lineSpacing(8)
+                    .lineSpacing(5)
                     .multilineTextAlignment(.center)
                 
             }
@@ -42,15 +42,16 @@ struct ScreamGameView: View {
                 ZStack {
                     ArrowShape()
                         .stroke(Color.white, lineWidth: 4)
-                        .frame(width: 24, height: 24)
+                        .frame(width: 20, height: 20)
                         .cornerRadius(4)
                     ArrowShape()
-                        .fill(Color.redArrow)
-                        .frame(width: 20, height: 20)
+                        .fill(Color.red)
+                        .frame(width: 16, height: 16)
                         .cornerRadius(4)
                 }
                 .offset(y: (arrowPosition - 0.5) * 300)
-                .offset(x: -35)
+                .offset(x: -25)
+                .zIndex(2)
             }
             
             Button(action: {
@@ -81,6 +82,8 @@ struct ScreamGameView: View {
                 
             }
     }
+    
+    //MARK: Functions
     
     func startAnimation() {
         isAnimating = true

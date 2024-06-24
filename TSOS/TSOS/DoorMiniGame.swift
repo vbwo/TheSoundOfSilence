@@ -39,7 +39,7 @@ struct DoorGameView: View {
                         Text("Aperte o botão quando a\nseta chegar ao verde para\nsegurar a porta.")
                             .font(Font.custom("PressStart2P-Regular", size: 10))
                             .foregroundColor(.white)
-                            .lineSpacing(8)
+                            .lineSpacing(5)
                             .multilineTextAlignment(.center)
                         
                     }
@@ -86,7 +86,9 @@ struct DoorGameView: View {
                                 .foregroundStyle(.black)
                                 .font(.custom("Dark Distance", size: 18))
                         }
-                    }
+                    } .padding(.top, -8)
+                        .padding(.bottom, 8)
+                    
                     
                     Text("\(successCount)/3")
                         .font(Font.custom("PressStart2P-Regular", size: 24))
@@ -104,6 +106,8 @@ struct DoorGameView: View {
             updateBackgroundImage(img)
         }
     }
+    
+    //MARK: Functions
     
     func startAnimation() {
         isAnimating = true
@@ -163,7 +167,7 @@ struct DoorGameView: View {
     func resetGame() {
         showJumpScare = false
         errorCount = 0
-        successCount = 0 
+        successCount = 0
         arrowPosition = 0.5
         movingUp = true
         startAnimation()
