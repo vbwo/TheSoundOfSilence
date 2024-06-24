@@ -102,11 +102,14 @@ struct MiniGameDoorView: View {
     }
     
     func checkPosition() {
-        if arrowPosition <= 0.25 {
-            print("Acertou!")
+        let greenZoneStart: CGFloat = 0.25
+                let greenZoneEnd: CGFloat = 0.75
+                
+                if arrowPosition >= greenZoneStart && arrowPosition <= greenZoneEnd {
+                    print("Acertou!")
         } else {
             errorCount += 1
-            if errorCount >= 2 {
+            if errorCount >= 3 {
                 showJumpScare = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     resetGame()
