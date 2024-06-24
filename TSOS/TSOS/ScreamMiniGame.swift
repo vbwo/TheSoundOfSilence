@@ -13,8 +13,10 @@ struct ScreamGameView: View {
     
     var body: some View {
         
-        VStack {
         
+        
+        VStack {
+            
             ZStack {
                 Rectangle()
                     .fill(Color.black.opacity(0.75))
@@ -116,27 +118,12 @@ struct ScreamGameView: View {
         if arrowPosition <= 0.25 {
             goToNextScene()
         } else {
-            errorCount += 1
-            if errorCount >= 2 {
-                showJumpScare = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    resetGame()
-                }
-            } else {
-                arrowPosition = 0.5
-                startAnimation()
-            }
+            arrowPosition = 0.5
+            startAnimation()
         }
     }
-    
-    func resetGame() {
-        showJumpScare = false
-        errorCount = 0
-        arrowPosition = 0.5
-        movingUp = true
-        startAnimation()
-    }
 }
+
 
 struct ArrowShape: Shape {
     func path(in rect: CGRect) -> Path {
