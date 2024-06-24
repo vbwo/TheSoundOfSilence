@@ -109,7 +109,7 @@ struct MiniGameDoorView: View {
                     print("Acertou!")
         } else {
             errorCount += 1
-            if errorCount >= 3 {
+            if errorCount >= 2 {
                 showJumpScare = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     resetGame()
