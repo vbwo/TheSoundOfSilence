@@ -11,16 +11,16 @@ import CoreHaptics
 struct DialogueScene: View {
     let text: String
     let img: String
+    @Binding var displayedText: String
+    @Binding var showArrow: Bool
+    @Binding var arrowOffset: CGFloat
+    @Binding var isShowingText: Bool
     var showText: (String) -> Void
     var animateArrow: () -> Void
     var goToNextScene: () -> Void
     var updateBackgroundImage: (String) -> Void
     @State private var engine: CHHapticEngine?
     @State private var timer: Timer?
-    @Binding var displayedText: String
-    @Binding var showArrow: Bool
-    @Binding var arrowOffset: CGFloat
-    @Binding var isShowingText: Bool
     
     var body: some View {
         ZStack {
@@ -73,25 +73,23 @@ struct DialogueScene: View {
         .padding(.bottom, 40)
         .onAppear {
             updateBackgroundImage(img)
+            prepareHaptics()
+            if img == "station2sound" {
+                startHapticLoop()
+            }
         }
         .onChange(of: img) {
+            updateBackgroundImage(img)
             if img == "station2sound" {
-                prepareHaptics()
                 startHapticLoop()
-            } else if img == "legs" {
-                prepareHaptics()
-                frightHaptics()
-                
             } else {
                 stopHapticLoop()
             }
-            
         }
         .onDisappear {
             stopHapticLoop()
         }
     }
-    
     
     //MARK: Functions
     
@@ -108,12 +106,7 @@ struct DialogueScene: View {
     func startHapticLoop() {
         stopHapticLoop()
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
-            if img == "station2sound" {
-                tekeHaptics()
-            }
-            if img == "legs" {
-                frightHaptics()
-            }
+            tekeHaptics()
         }
     }
     
@@ -141,30 +134,6 @@ struct DialogueScene: View {
         events.append(event2)
         events.append(event3)
         events.append(event4)
-        
-        do {
-            let pattern = try CHHapticPattern(events: events, parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play haptic: \(error.localizedDescription)")
-        }
-    }
-    
-    func frightHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            return
-        }
-        
-        var events = [CHHapticEvent]()
-        
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        
-        let event1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 3)
-        
-        events.append(event1)
-
         
         do {
             let pattern = try CHHapticPattern(events: events, parameters: [])

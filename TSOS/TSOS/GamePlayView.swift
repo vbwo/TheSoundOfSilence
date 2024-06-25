@@ -39,7 +39,7 @@ struct GamePlayView: View {
             .dialogue(text: "Alguém deve estar por lá...", img: "station2sound"),
             .dialogue(text: "Vou verificar.", img: "station2sound"),
             .walk(text: "Andar", img: "station2sound", imgicon: "walkingleft"),
-            .dialogue(text: "[Tem algo ali nos trilhos...\nDeixa eu me aproximar um pouco.]", img: "station2sound"),
+            .dialogue(text: "[Tem algo ali nos trilhos...\nDeixa eu me aproximar um pouco.]", img: "station3"),
             .empty(img: "feet"),
             .empty(img: "legs"),
             .dialogue(text: "!!!!!!!!!!??????????", img: "legs"),
