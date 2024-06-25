@@ -24,7 +24,7 @@ struct CircleGameView: View {
 
 
     // Defina os tamanhos mínimo e máximo para o círculo
-    let minSize: CGFloat = 80
+    let minSize: CGFloat = 50
     let maxSize: CGFloat = 200
     // Intervalo de tempo para atualização
     let interval: TimeInterval = 0.1
@@ -42,8 +42,9 @@ struct CircleGameView: View {
                 
                 HStack{
                     
-                    Text("Controle sua respiração. Não deixe o circulo ficar muito grande ou muito pequeno.")
+                    Text("Controle sua respiração. Toque no CÍRCULO para controlar seu tamanho. Não o deixe ficar tão grande ou tão pequeno.")
                       .font(Font.custom("Press Start 2P", size: 10))
+                      .lineSpacing(4)
                       .multilineTextAlignment(.center)
                       .foregroundColor(.white)
                       .frame(width: 302, alignment: .top)
@@ -97,7 +98,7 @@ struct CircleGameView: View {
                         self.startGame()
                     } , label: {
                         HStack {
-                            Text("RESPIRE")
+                            Text("INICIAR")
                               .font(Font.custom("Dark Distance", size: 20))
                               .foregroundColor(.black)
                         }
