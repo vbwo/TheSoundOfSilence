@@ -146,7 +146,7 @@ struct DoorGameView: View {
         if arrowPosition >= greenZoneStart && arrowPosition <= greenZoneEnd {
             successCount += 1
             if successCount >= 3 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     goToNextScene()
                 }
             } else {
