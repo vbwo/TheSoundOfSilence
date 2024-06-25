@@ -76,6 +76,8 @@ struct DialogueScene: View {
             prepareHaptics()
             if img == "station2sound" {
                 startHapticLoop()
+            } else if img == "legs" {
+                startLegsHaptics()
             }
         }
         .onChange(of: img) {
@@ -137,6 +139,25 @@ struct DialogueScene: View {
         
         do {
             let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play haptic: \(error.localizedDescription)")
+        }
+    }
+    
+    func startLegsHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
+        
+        let continuousEvent = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 1.5)
+        
+        do {
+            let pattern = try CHHapticPattern(events: [continuousEvent], parameters: [])
             let player = try engine?.makePlayer(with: pattern)
             try player?.start(atTime: 0)
         } catch {

@@ -106,7 +106,7 @@ struct GameSceneView: View {
         showArrow = false
         isShowingText = true
         
-        Timer.scheduledTimer(withTimeInterval: 0.04, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
             if currentIndex < text.count {
                 if !isShowingText {
                     displayedText = text
