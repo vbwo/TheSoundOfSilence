@@ -82,7 +82,7 @@ struct DialogueScene: View {
         }
         .onChange(of: img) {
             updateBackgroundImage(img)
-            if img == "station2sound" {
+            if img == "station2sound" || img == "station4sound" {
                 startHapticLoop()
             } else {
                 stopHapticLoop()
