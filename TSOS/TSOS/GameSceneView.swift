@@ -2,81 +2,125 @@
 //  GameSceneView.swift
 //  TSOS
 //
-//  Created by Vitória Beltrão Wenceslau do Ó on 14/06/24.
+//  Created by Vitória Beltrão Wenceslau do Ó on 19/06/24.
 //
 
 import SwiftUI
+
+enum SceneType {
+    case dialogue(text: String, img: String)
+    case walk(text: String, img: String, imgicon: String)
+    case empty(img: String)
+    case miniGames(gameType: MiniGameType)
+    
+    enum MiniGameType {
+        case locker(img: String)
+        case scream(img: String)
+        case door(img: String)
+    }
+}
 
 struct GameSceneView: View {
     @State private var displayedText: String = ""
     @State private var currentIndex: Int = 0
     @State private var showArrow: Bool = false
     @State private var arrowOffset: CGFloat = 0
-    var sceneImage: String
-    var fullText: String
-  
+    @State private var currentSceneIndex: Int = 0
+    @State private var backgroundImg = ""
+    @State private var isShowingText = false
+    
+    let scenes: [SceneType]
     
     var body: some View {
         ZStack {
-            Image(sceneImage)
+            Image(backgroundImg)
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                
                 Spacer()
                 
-                ZStack {
-                    Rectangle()
-                        .fill(Color.black.opacity(0.75))
-                        .frame(width: 353, height: 128, alignment: .leading)
-                        .border(Color.white, width: 3)
+                switch scenes[currentSceneIndex] {
+                case .dialogue(let text, let img):
+                    DialogueScene(
+                        text: text,
+                        img: img,
+                        displayedText: $displayedText,
+                        showArrow: $showArrow,
+                        arrowOffset: $arrowOffset,
+                        isShowingText: $isShowingText,
+                        showText: showText,
+                        animateArrow: animateArrow,
+                        goToNextScene: goToNextScene,
+                        updateBackgroundImage: updateBackgroundImage
+                    )
                     
-                    VStack(alignment: .leading) {
-                        Text(displayedText)
-                            .font(Font.custom("PressStart2P-Regular", size: 10))
-                            .foregroundColor(.white)
-                            .padding(.leading, 16)
-                            .padding(.top, 16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .onAppear {
-                                showText()
-                            }
-                        
-                        Spacer()
-                        
-                        if showArrow {
-                            Image(systemName: "arrowtriangle.right.fill")
-                                .foregroundColor(.white)
-                                .offset(x: arrowOffset)
-                                .frame(height: 20)
-                                .padding(.leading, 310)
-                                .padding(.bottom, 12)
-                                .onAppear {
-                                    animateArrow()
-                                }
-                        }
+                case .walk(let text, let img, let imgicon):
+                    WalkScene(
+                        text: text,
+                        img: img,
+                        imgicon: imgicon,
+                        goToNextScene: goToNextScene,
+                        updateBackgroundImage: updateBackgroundImage
+                    )
+                    
+                case .empty(let img):
+                    EmptyScene(
+                        img: img,
+                        goToNextScene: goToNextScene,
+                        updateBackgroundImage: updateBackgroundImage
+                    )
+                    
+                case .miniGames(let gameType):
+                    switch gameType {
+                    case .locker(let img):
+                        LockerScene(
+                            img: img,
+                            updateBackgroundImage: updateBackgroundImage,
+                            goToNextScene: goToNextScene
+                        )
+                    case .scream(let img):
+                        ScreamGameView(
+                            img: img,
+                            updateBackgroundImage: updateBackgroundImage,
+                            goToNextScene: goToNextScene
+                        )
+                    case .door(let img):
+                        DoorGameView(
+                            img: img,
+                            updateBackgroundImage: updateBackgroundImage,
+                            goToNextScene: goToNextScene
+                        )
                     }
-                    .frame(width: 353, height: 128)
                 }
-                .padding(.bottom, 40)
-                
             }
-        } 
+        }
     }
     
-    func showText() {
+    //MARK: Functions
+    
+    func showText(_ text: String) {
         displayedText = ""
         currentIndex = 0
         showArrow = false
+        isShowingText = true
         
-        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
-            if currentIndex < fullText.count {
-                let index = fullText.index(fullText.startIndex, offsetBy: currentIndex)
-                displayedText.append(fullText[index])
-                currentIndex += 1
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+            if currentIndex < text.count {
+                if !isShowingText {
+                    displayedText = text
+                    timer.invalidate()
+                    showArrow = true
+                } else {
+                    let index = text.index(text.startIndex, offsetBy: currentIndex)
+                    displayedText.append(text[index])
+                    currentIndex += 1
+                }
             } else {
                 timer.invalidate()
                 showArrow = true
+                isShowingText = false
             }
         }
     }
@@ -86,8 +130,34 @@ struct GameSceneView: View {
             arrowOffset = 10
         }
     }
-}
-
-#Preview {
-    GameSceneView(sceneImage: "", fullText: "")
+    
+    func goToNextScene() {
+        if currentSceneIndex < scenes.count - 1 {
+            currentSceneIndex += 1
+            let nextScene = scenes[currentSceneIndex]
+            switch nextScene {
+            case .dialogue(let text, let img):
+                showText(text)
+                updateBackgroundImage(img)
+            case .walk(let text, let img, _):
+                showText(text)
+                updateBackgroundImage(img)
+            case .empty(let img):
+                updateBackgroundImage(img)
+            case .miniGames(gameType: let gameType):
+                switch gameType {
+                case .locker(let img):
+                    updateBackgroundImage(img)
+                case .scream(let img):
+                    updateBackgroundImage(img)
+                case .door(let img):
+                    updateBackgroundImage(img)
+                }
+            }
+        }
+    }
+    
+    func updateBackgroundImage(_ img: String) {
+        backgroundImg = img
+    }
 }

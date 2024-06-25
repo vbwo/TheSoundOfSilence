@@ -25,6 +25,11 @@ struct ContentView: View {
                     .animation(.easeInOut(duration: 1), value: isFadingOut)
             } else if currentView == 3 {
                 RecommendView()
+                    .opacity(isFadingOut ? 0 : 1)
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 1), value: isFadingOut)
+            } else if currentView == 4 {
+                GamePlayView()
             }
         }
         .background(.black)
@@ -39,7 +44,7 @@ struct ContentView: View {
                 currentView += 1
                 isFadingOut = false
             }
-            if currentView < 3 {
+            if currentView < 4 {
                 transitionToNextView(after: 4)
             }
         }
