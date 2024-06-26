@@ -35,7 +35,7 @@ struct EmptyScene: View {
                         prepareHaptics()
                         doorHaptics()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            //goToNextScene()
+                            goToNextScene()
                             updateBackgroundImage(img)
                         }
                     }

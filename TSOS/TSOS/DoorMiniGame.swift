@@ -17,6 +17,7 @@ struct DoorGameView: View {
     @State private var successCount = 0
     @State private var showJumpScare = false
     @State private var engine: CHHapticEngine?
+    @State private var shakeOffset: CGFloat = 0
     let img: String
     let updateBackgroundImage: (String) -> Void
     var goToNextScene: () -> Void
@@ -103,7 +104,7 @@ struct DoorGameView: View {
                 Spacer()
                 
             }
-        }
+        } .offset(x: shakeOffset)
         .onAppear {
             startAnimation()
             updateBackgroundImage(img)
@@ -215,6 +216,18 @@ struct DoorGameView: View {
         }
         
     }
+    
+    func shakeScreen() {
+            let shakeAnimation = Animation.linear(duration: 0.02).repeatCount(10, autoreverses: true)
+            withAnimation(shakeAnimation) {
+                shakeOffset = 10
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(Animation.linear(duration: 0.02)) {
+                    shakeOffset = 0
+                }
+            }
+        }
 }
 
 struct ArrowShape2: Shape {
