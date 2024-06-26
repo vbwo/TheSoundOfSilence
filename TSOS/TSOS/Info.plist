@@ -4,11 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>DarkDistance.ttf</string>
 		<string>Jura.ttf</string>
-		<string>Dark Distance.ttf</string>
 		<string>PressStart2P-Regular.ttf</string>
 		<string>horroroid.ttf</string>
-		<string>Dark Distance.ttf</string>
 	</array>
 </dict>
 </plist>
