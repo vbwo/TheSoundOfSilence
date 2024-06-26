@@ -55,13 +55,9 @@ struct GamePlayView: View {
             .dialogue(text: "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", img: "teke"),
             .dialogue(text: "[Sem ter tempo para raciocinar,\nvirei de costas e corri como se\nminha vida dependesse disso. E,\naparentemente, dependia.]", img: "teke"),
             .walk(text: "Correr", img: "bodyzoom", imgicon: "walkingleft"),
-            .dialogue(text: "[Me escondi atrás da primeira\npilastra que vi, tampando a\nboca para não chamar atenção\ncom minha respiração ofegante.]", img: "station4"),
-            .dialogue(text: "[Consigo escutar seu som\ncaracterístico por perto. Tenho\nque fazer silêncio agora.]", img: "station4sound"),
-            
-            //-------------------//
-            //ADD BREATH MINIGAME//
-            //------------------//
-            
+            .dialogue(text: "[Me escondi atrás da primeira\npilastra que vi, tampando a\nboca para não chamar atenção\ncom minha respiração ofegante.]", img: "station4"),    
+            .dialogue(text: "[Consigo escutar seu som\ncaracterístico por perto. Tenho\nque fazer silêncio agora.]", img: "station4sound"), 
+            .miniGames(gameType: .breath(img: "breathgame")),
             .dialogue(text: "[Acho que despistei por\nenquanto...]", img: "station4"),
             .dialogue(text: "[Devo voltar a correr agora\nantes que aquilo volte.]", img: "station4"),
             .walk(text: "Correr", img: "station4", imgicon: "walkingright"),
@@ -106,7 +102,7 @@ struct GamePlayView: View {
     }
 }
 
-#Preview {
+#Preview { 
     GamePlayView()
 }
 

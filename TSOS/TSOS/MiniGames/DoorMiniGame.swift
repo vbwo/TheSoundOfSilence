@@ -46,9 +46,25 @@ struct DoorGameView: View {
         GeometryReader { geometry in
             VStack {
                 if showGameOverImage {
-                    Image("gameover")
-                        .ignoresSafeArea()
-                        .transition(.opacity)
+                    VStack {
+                        ZStack {
+                            Image("gameover")
+                                .offset(y: -67)
+                                .ignoresSafeArea()
+                                .transition(.opacity)
+                            
+                            Button(action: {
+                                resetDoorGame()
+                            }) {
+                                Text("TENTAR\nNOVAMENTE")
+                                    .foregroundStyle(.white)
+                                    .font(.custom("Dark Distance", size: 32))
+                                    .multilineTextAlignment(.center)
+                                    .shadow(radius: 10)
+                            }
+                            .offset(y: 220)
+                        }
+                    }
                 } else if showGlitchVideo, let player = player {
                     GlitchVideoView(player: player, size: geometry.size)
                         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -207,14 +223,15 @@ struct DoorGameView: View {
         }
     }
     
-    func resetGame() {
-        showJumpScare = false
-        errorCount = 0
-        successCount = 0
-        arrowPosition = 0.5
-        movingUp = true
-        startAnimation()
-    }
+    func resetDoorGame() {
+           errorCount = 0
+           successCount = 0
+           arrowPosition = 0.5
+           movingUp = true
+           showGlitchVideo = false
+           showGameOverImage = false
+           startAnimation()
+       }
     
     func prepareGlitchVideo() {
         if let url = Bundle.main.url(forResource: "glitch", withExtension: "mov") {

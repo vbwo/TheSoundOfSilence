@@ -16,6 +16,7 @@ enum SceneType {
     enum MiniGameType {
         case locker(img: String)
         case scream(img: String)
+        case breath(img: String)
         case door(img: String)
     }
 }
@@ -92,6 +93,12 @@ struct GameSceneView: View {
                             updateBackgroundImage: updateBackgroundImage,
                             goToNextScene: goToNextScene
                         )
+                    case .breath(let img):
+                        BreathGameView(
+                            img: img,
+                            updateBackgroundImage: updateBackgroundImage,
+                            goToNextScene: goToNextScene
+                        )
                     }
                 }
             }
@@ -149,6 +156,8 @@ struct GameSceneView: View {
                 case .locker(let img):
                     updateBackgroundImage(img)
                 case .scream(let img):
+                    updateBackgroundImage(img)
+                case .breath(let img):
                     updateBackgroundImage(img)
                 case .door(let img):
                     updateBackgroundImage(img)

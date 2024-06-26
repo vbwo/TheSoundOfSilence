@@ -27,7 +27,7 @@ struct EmptyScene: View {
                     }
                     if img == "jump1" {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            updateBackgroundImage(img)
+                            goToNextScene()
                         }
                     }
                     if img == "door1sound" {
