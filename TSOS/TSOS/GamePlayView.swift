@@ -31,7 +31,7 @@ struct GamePlayView: View {
             .miniGames(gameType: .scream(img: "station2game")),
             .dialogue(text: "OOOI? Tem alguém aqui?", img: "station2"),
             .dialogue(text: "[Sem resposta...]", img: "station2"),
-            .dialogue(text: "Vou continuar tentando.", img: "station2"),
+            .dialogue(text: "Vou continuar tentando.", img: "station2"), 
             .miniGames(gameType: .scream(img: "station2game")),
             .dialogue(text: "BOA NOITE! Alguém pode me\najudar? Estou presa aqui!", img: "station2"),
             .empty(img: "jump1"),

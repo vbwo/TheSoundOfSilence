@@ -7,6 +7,23 @@
 
 import SwiftUI
 import CoreHaptics
+import AVKit
+
+struct GlitchVideoView: View {
+    var player: AVPlayer
+    var size: CGSize
+    
+    var body: some View {
+        VideoPlayer(player: player)
+            .onAppear {
+                player.play()
+            }
+            .onDisappear {
+                player.pause()
+            }
+            .scaleEffect(CGSize(width: 1.2, height: 1.2))
+    }
+}
 
 struct DoorGameView: View {
     @State private var arrowPosition: CGFloat = 0.5
@@ -18,98 +35,118 @@ struct DoorGameView: View {
     @State private var showJumpScare = false
     @State private var engine: CHHapticEngine?
     @State private var shakeOffset: CGFloat = 0
+    @State private var showGlitchVideo = false
+    @State private var showGameOverImage = false
+    @State private var player: AVPlayer?
     let img: String
     let updateBackgroundImage: (String) -> Void
     var goToNextScene: () -> Void
     
     var body: some View {
-        VStack {
-            if showJumpScare {
-                Image("jumpSkeleton")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipped()
-                    .ignoresSafeArea()
-                
-            } else {
-                VStack (alignment: .center, spacing: 24.0) {
-                    
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.black.opacity(0.75))
-                            .frame(width: 311, height: 70, alignment: .leading)
-                            .border(Color.white, width: 3)
-                        Text("Aperte o botão quando a\nseta chegar ao verde para\nsegurar a porta.")
-                            .font(Font.custom("PressStart2P-Regular", size: 10))
-                            .foregroundColor(.white)
-                            .lineSpacing(5)
-                            .multilineTextAlignment(.center)
-                        
-                    }
+        GeometryReader { geometry in
+            VStack {
+                if showGameOverImage {
+                    Image("gameover")
+                        .ignoresSafeArea()
+                        .transition(.opacity)
+                } else if showGlitchVideo, let player = player {
+                    GlitchVideoView(player: player, size: geometry.size)
+                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        .ignoresSafeArea(.all)
+                        .transition(.opacity)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + (player.currentItem?.duration.seconds ?? 0)) {
+                                withAnimation(.easeOut(duration: 2)) {
+                                    showGameOverImage = true
+                                }
+                            }
+                        }
+                } else {
                     
                     Spacer()
                     
-                    ZStack {
-                        Rectangle()
-                            .fill(LinearGradient(
-                                gradient: Gradient(colors: [.red, .orange, .yellow, .green, .yellow, .orange, .red]),
-                                startPoint: .leading,
-                                endPoint: .trailing))
-                            .frame(width: 300, height: 50)
-                            .border(Color.white, width: 3)
+                    VStack {
                         
                         ZStack {
-                            ArrowShape2()
-                                .stroke(Color.white, lineWidth: 4)
-                                .frame(width: 20, height: 20)
-                                .cornerRadius(4)
-                            ArrowShape2()
-                                .fill(Color.redArrow)
-                                .frame(width: 16, height: 16)
-                                .cornerRadius(4)
+                            Rectangle()
+                                .fill(Color.black.opacity(0.75))
+                                .frame(width: 311, height: 70, alignment: .leading)
+                                .border(Color.white, width: 3)
+                            Text("Aperte o botão quando a\nseta chegar ao verde para\nsegurar a porta.")
+                                .font(Font.custom("PressStart2P-Regular", size: 10))
+                                .foregroundColor(.white)
+                                .lineSpacing(5)
+                                .multilineTextAlignment(.center)
+                            
                         }
-                        .offset(x: (arrowPosition - 0.5) * 300)
-                        .offset(y: 25)
-                    }
-                    .padding()
-                    
-                    Button(action: {
-                        stopAnimation()
-                        checkPosition()
-                    }) {
+                        
+                        Spacer()
+                        
                         ZStack {
                             Rectangle()
                                 .fill(LinearGradient(
-                                    gradient: Gradient(colors: [.gray, .white, .gray]),
+                                    gradient: Gradient(colors: [.red, .orange, .yellow, .green, .yellow, .orange, .red]),
                                     startPoint: .leading,
                                     endPoint: .trailing))
-                                .frame(width: 193, height: 52)
+                                .frame(width: 300, height: 50)
+                                .border(Color.white, width: 3)
                             
-                            Text("SEGURE A PORTA ")
-                                .foregroundStyle(.black)
-                                .font(.custom("Dark Distance", size: 18))
+                            ZStack {
+                                ArrowShape2()
+                                    .stroke(Color.white, lineWidth: 4)
+                                    .frame(width: 20, height: 20)
+                                    .cornerRadius(4)
+                                ArrowShape2()
+                                    .fill(Color.redArrow)
+                                    .frame(width: 16, height: 16)
+                                    .cornerRadius(4)
+                            }
+                            .offset(x: (arrowPosition - 0.5) * 300)
+                            .offset(y: 25)
                         }
-                    } .padding(.top, -8)
-                        .padding(.bottom, 8)
+                        .padding()
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            stopAnimation()
+                            checkPosition()
+                        }) {
+                            ZStack {
+                                Rectangle()
+                                    .fill(LinearGradient(
+                                        gradient: Gradient(colors: [.gray, .white, .gray]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing))
+                                    .frame(width: 193, height: 52)
+                                
+                                Text("SEGURE A PORTA ")
+                                    .foregroundStyle(.black)
+                                    .font(.custom("Dark Distance", size: 18))
+                            }
+                        } .padding(.top, -8)
+                        
+                        Spacer()
+                        
+                        Text("\(successCount)/3")
+                            .font(Font.custom("PressStart2P-Regular", size: 24))
+                            .foregroundColor(.white)
+                           
+                        
+                    } .frame(width: 327, height: 401)
+                        .padding(.leading, 36)
                     
-                    
-                    Text("\(successCount)/3")
-                        .font(Font.custom("PressStart2P-Regular", size: 24))
-                        .foregroundColor(.white)
-                    
-                } .frame(width: 327, height: 401)
-                    .padding(.top, 128)
-                
-                Spacer()
-                
-            }
-        } .offset(x: shakeOffset)
-        .onAppear {
-            startAnimation()
-            updateBackgroundImage(img)
+                    Spacer()
+                }
+            } .offset(x: shakeOffset)
+                .onAppear {
+                    startAnimation()
+                    updateBackgroundImage(img)
+                    prepareGlitchVideo()
+                }
         }
     }
+    
     
     //MARK: Functions
     
@@ -157,9 +194,8 @@ struct DoorGameView: View {
         } else {
             errorCount += 1
             if errorCount >= 3 {
-                showJumpScare = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    resetGame()
+                withAnimation(.easeOut(duration: 1)) {
+                    showGlitchVideo = true
                 }
             } else {
                 arrowPosition = 0.5
@@ -178,6 +214,12 @@ struct DoorGameView: View {
         arrowPosition = 0.5
         movingUp = true
         startAnimation()
+    }
+    
+    func prepareGlitchVideo() {
+        if let url = Bundle.main.url(forResource: "glitch", withExtension: "mov") {
+            player = AVPlayer(url: url)
+        }
     }
     
     func prepareHaptics() {
@@ -219,16 +261,16 @@ struct DoorGameView: View {
     }
     
     func shakeScreen() {
-            let shakeAnimation = Animation.linear(duration: 0.02).repeatCount(10, autoreverses: true)
-            withAnimation(shakeAnimation) {
-                shakeOffset = 10
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                withAnimation(Animation.linear(duration: 0.02)) {
-                    shakeOffset = 0
-                }
+        let shakeAnimation = Animation.linear(duration: 0.02).repeatCount(10, autoreverses: true)
+        withAnimation(shakeAnimation) {
+            shakeOffset = 10
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            withAnimation(Animation.linear(duration: 0.02)) {
+                shakeOffset = 0
             }
         }
+    }
 }
 
 struct ArrowShape2: Shape {
