@@ -27,7 +27,6 @@ struct EmptyScene: View {
                     }
                     if img == "jump1" {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            goToNextScene()
                             updateBackgroundImage(img)
                         }
                     }
@@ -35,7 +34,6 @@ struct EmptyScene: View {
                         prepareHaptics()
                         doorHaptics()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            goToNextScene()
                             updateBackgroundImage(img)
                         }
                     }

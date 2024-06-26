@@ -156,7 +156,7 @@ struct DoorGameView: View {
             }
         } else {
             errorCount += 1
-            if errorCount >= 2 {
+            if errorCount >= 3 {
                 showJumpScare = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     resetGame()
@@ -166,6 +166,7 @@ struct DoorGameView: View {
                 startAnimation()
                 prepareHaptics()
                 wrongHaptics()
+                shakeScreen()
             }
         }
     }
