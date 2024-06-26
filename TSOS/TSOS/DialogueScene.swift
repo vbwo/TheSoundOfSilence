@@ -76,16 +76,21 @@ struct DialogueScene: View {
             prepareHaptics()
             if img == "station2sound" {
                 startHapticLoop()
-            } else if img == "legs" {
-                startLegsHaptics()
+            } else if img == "legs" || img == "teke" {
+                scareHaptics()
             }
         }
         .onChange(of: img) {
             updateBackgroundImage(img)
-            if img == "station2sound" {
+            if img == "station2sound" || img == "station4sound" {
                 startHapticLoop()
             } else {
                 stopHapticLoop()
+            }
+            
+            if img == "cam4" {
+                prepareHaptics()
+                scareHaptics()
             }
         }
         .onDisappear {
@@ -146,7 +151,7 @@ struct DialogueScene: View {
         }
     }
     
-    func startLegsHaptics() {
+    func scareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             return
         }

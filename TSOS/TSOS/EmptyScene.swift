@@ -27,15 +27,29 @@ struct EmptyScene: View {
                     }
                     if img == "jump1" {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            updateBackgroundImage(img)
+                        }
+                    }
+                    if img == "door1sound" {
+                        prepareHaptics()
+                        doorHaptics()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            updateBackgroundImage(img)
+                        }
+                    }
+                    if img == "teke" {
+                        prepareHaptics()
+                        scareHaptics()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             goToNextScene()
                             updateBackgroundImage(img)
                         }
                     }
-                    else { 
+                    else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                        goToNextScene()
-                        updateBackgroundImage(img)
-                    }
+                            goToNextScene()
+                            updateBackgroundImage(img)
+                        }
                     }
                 }
                 .onChange(of: img){
@@ -85,5 +99,53 @@ struct EmptyScene: View {
             print("Failed to play haptic: \(error.localizedDescription)")
         }
     }
+    
+    func doorHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        var events = [CHHapticEvent]()
+        
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        
+        let event1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 0.1)
+        let pause = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 0.17)
+        let event2 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0.19, duration: 0.2)
+        
+        events.append(event1)
+        events.append(pause)
+        events.append(event2)
+        
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play haptic: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    func scareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
+        
+        let continuousEvent = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 1.5)
+        
+        do {
+            let pattern = try CHHapticPattern(events: [continuousEvent], parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play haptic: \(error.localizedDescription)")
+        }
+    }
+    
 }
 
