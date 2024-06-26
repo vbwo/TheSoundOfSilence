@@ -62,22 +62,49 @@ struct CircleGameView: View {
                     )
                 
                 Spacer()
-                    .frame(maxHeight: 150)
+                    
                     
                 
-                Circle()
-                    .fill(circleColor)
-                    .frame(width: circleSize, height: circleSize)
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { _ in
-                                self.isPressed = true
-                            }
-                            .onEnded { _ in
-                                self.isPressed = false
-                            }
-                    )
+                ZStack {
+                    Circle()
+                        .fill(circleColor)
+                        .frame(width: circleSize, height: circleSize)
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { _ in
+                                    self.isPressed = true
+                                }
+                                .onEnded { _ in
+                                    self.isPressed = false
+                                }
+                        )
                     .animation(.linear, value: circleSize)
+                    
+                    if isButtonVisible {
+                        Button(action: {
+                            isButtonVisible = false
+                            self.startGame()
+                        } , label: {
+                            HStack {
+                                Text("INICIAR")
+                                  .font(Font.custom("Dark Distance", size: 20))
+                                  .foregroundColor(.black)
+                            }
+                            .foregroundColor(.clear)
+                        
+                        })
+                    } else {
+                        Button(action: {}) {
+                                            Text("Click me to disappear")
+                                                .padding()
+                                                .background(Color.clear)
+                                                .foregroundColor(.clear)
+                                                .cornerRadius(10)
+                                        }
+                                        .hidden()
+                    }
+                    
+                }
                 
                 Spacer()
                     .frame(maxHeight: 50)
@@ -92,41 +119,7 @@ struct CircleGameView: View {
                 
     //------------------ BOTÕES
                 
-                if isButtonVisible {
-                    Button(action: {
-                        isButtonVisible = false
-                        self.startGame()
-                    } , label: {
-                        HStack {
-                            Text("INICIAR")
-                              .font(Font.custom("Dark Distance", size: 20))
-                              .foregroundColor(.black)
-                        }
-                        .foregroundColor(.clear)
-                        .frame(width: 193, height: 47)
-                        .background(
-                        LinearGradient(
-                        stops: [
-                        Gradient.Stop(color: Color(red: 0.56, green: 0.56, blue: 0.56), location: 0.00),
-                        Gradient.Stop(color: Color(red: 0.89, green: 0.89, blue: 0.89), location: 0.50),
-                        Gradient.Stop(color: Color(red: 0.56, green: 0.56, blue: 0.56), location: 1.00),
-                        ],
-                        startPoint: UnitPoint(x: 0, y: 0.5),
-                        endPoint: UnitPoint(x: 1, y: 0.5)
-                        )
-                        )
-                        .background(Color(red: 0.85, green: 0.85, blue: 0.85))
-                    })
-                } else {
-                    Button(action: {}) {
-                                        Text("Click me to disappear")
-                                            .padding()
-                                            .background(Color.clear)
-                                            .foregroundColor(.clear)
-                                            .cornerRadius(10)
-                                    }
-                                    .hidden()
-                }
+             
                 
                 if isFailed {
                     Spacer()
@@ -170,6 +163,7 @@ struct CircleGameView: View {
                 Spacer()
                 
             }
+            
             
             
             
