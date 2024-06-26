@@ -43,7 +43,7 @@ struct GamePlayView: View {
             .empty(img: "feet"),
             .empty(img: "legs"),
             .dialogue(text: "!!!!!!!!!!??????????", img: "legs"),
-            .dialogue(text: "O que... é ISSO?!", img: "bodyzoom"),
+            .dialogue(text: "O que... é ISSO?!", img: "legs"),
             .dialogue(text: "[Me sinto enjoada, paralisada...\nnão sei o que está acontecendo,\nnem o que fazer.]", img: "bodyzoom"),
             .dialogue(text: "É um corpo... ou metade dele.", img: "bodyzoom"),
             .dialogue(text: "Parece recente e sofrido.", img: "bodyzoom"),

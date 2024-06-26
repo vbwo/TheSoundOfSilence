@@ -27,7 +27,7 @@
 		6A464C6C2C1D14700051C3C7 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C6B2C1D14700051C3C7 /* RecommendView.swift */; };
 		7364B81E2C278FCB00B7C807 /* ScreamMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */; };
 		7364B8202C27A0FC00B7C807 /* DoorMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */; };
-		C1846C142C2305C300D66E86 /* BreathGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1846C132C2305C300D66E86 /* BreathGameView.swift */; };
+		C1846C142C2305C300D66E86 /* BreathMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1846C132C2305C300D66E86 /* BreathMiniGame.swift */; };
 		C1F1680F2C2C41B200A7D4CE /* DarkDistance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1F1680E2C2C41B200A7D4CE /* DarkDistance.ttf */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreamMiniGame.swift; sourceTree = "<group>"; };
 		7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorMiniGame.swift; sourceTree = "<group>"; };
 		C1846C112C2300BF00D66E86 /* DarkDistance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DarkDistance.ttf; path = ../../../../../../Downloads/dark_distance/DarkDistance.ttf; sourceTree = "<group>"; };
-		C1846C132C2305C300D66E86 /* BreathGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathGameView.swift; sourceTree = "<group>"; };
+		C1846C132C2305C300D66E86 /* BreathMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathMiniGame.swift; sourceTree = "<group>"; };
 		C1F1680E2C2C41B200A7D4CE /* DarkDistance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DarkDistance.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +75,7 @@
 			children = (
 				6A12F5262C2367FA0084EA7C /* LockerScene.swift */,
 				7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */,
-				C1846C132C2305C300D66E86 /* BreathGameView.swift */,
+				C1846C132C2305C300D66E86 /* BreathMiniGame.swift */,
 				7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */,
 			);
 			path = MiniGames;
@@ -250,7 +250,7 @@
 				6A12F5012C22FA490084EA7C /* GamePlayView.swift in Sources */,
 				6A12F5272C2367FA0084EA7C /* LockerScene.swift in Sources */,
 				6A464C4C2C1C572C0051C3C7 /* ContentView.swift in Sources */,
-				C1846C142C2305C300D66E86 /* BreathGameView.swift in Sources */,
+				C1846C142C2305C300D66E86 /* BreathMiniGame.swift in Sources */,
 				6A12F5292C2450BD0084EA7C /* EmptyScene.swift in Sources */,
 				6A12F5232C2367E20084EA7C /* DialogueScene.swift in Sources */,
 				7364B8202C27A0FC00B7C807 /* DoorMiniGame.swift in Sources */,
