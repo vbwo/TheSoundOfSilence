@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GamePlayView: View {
     var body: some View {
-        GameSceneView(scenes: [ 
+        GameSceneView(scenes: [  
             .dialogue(text: "Droga! Perdi o último metrô...", img: "station1"),
             .dialogue(text: "Agora já era. Vou sair daqui\ne tentar a sorte de passar um\ntáxi.", img: "station1"),
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),

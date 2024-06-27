@@ -109,12 +109,15 @@ struct BreathGameView: View {
                                     isButtonVisible = false
                                     startGame()
                                 }) {
-                                    HStack {
+                                    ZStack {
+                                        Circle()
+                                            .fill(circleColor)
+                                            .frame(width: circleSize, height: circleSize)
                                         Text("INICIAR ")
                                             .font(Font.custom("Dark Distance", size: 24))
                                             .foregroundColor(.black)
                                     }
-                                    .foregroundColor(.clear)
+                                  
                                 }
                             } else {
                                 Button(action: {}) {
