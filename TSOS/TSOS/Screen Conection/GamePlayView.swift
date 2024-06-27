@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GamePlayView: View {
     var body: some View {
-        GameSceneView(scenes: [
+        GameSceneView(scenes: [  
             .dialogue(text: "Droga! Perdi o último metrô...", img: "station1"),
             .dialogue(text: "Agora já era. Vou sair daqui\ne tentar a sorte de passar um\ntáxi.", img: "station1"),
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),
@@ -22,7 +22,7 @@ struct GamePlayView: View {
             .empty(img: "lightsoff1"),
             .dialogue(text: "Mas o que...", img: "lightsoff2"),
             .dialogue(text: "O que está acontecendo?", img: "lightsoff2"),
-            .empty(img: "station1"),
+            .empty(img: "station1"), 
             .dialogue(text: "Ok, isso foi esquisito...", img: "station1"),
             .dialogue(text: "Talvez seja um bom sinal… Alguém\ndeve estar trabalhando por aqui\nainda.", img: "station1"),
             .dialogue(text: "Mas não adianta ficar imaginando\ncoisas. Vou andar um pouco para\nprocurar.", img: "station1"),
@@ -31,7 +31,7 @@ struct GamePlayView: View {
             .miniGames(gameType: .scream(img: "station2game")),
             .dialogue(text: "OOOI? Tem alguém aqui?", img: "station2"),
             .dialogue(text: "[Sem resposta...]", img: "station2"),
-            .dialogue(text: "Vou continuar tentando.", img: "station2"),
+            .dialogue(text: "Vou continuar tentando.", img: "station2"), 
             .miniGames(gameType: .scream(img: "station2game")),
             .dialogue(text: "BOA NOITE! Alguém pode me\najudar? Estou presa aqui!", img: "station2"),
             .empty(img: "jump1"),
@@ -43,7 +43,7 @@ struct GamePlayView: View {
             .empty(img: "feet"),
             .empty(img: "legs"),
             .dialogue(text: "!!!!!!!!!!??????????", img: "legs"),
-            .dialogue(text: "O que... é ISSO?!", img: "bodyzoom"),
+            .dialogue(text: "O que... é ISSO?!", img: "legs"),
             .dialogue(text: "[Me sinto enjoada, paralisada...\nnão sei o que está acontecendo,\nnem o que fazer.]", img: "bodyzoom"),
             .dialogue(text: "É um corpo... ou metade dele.", img: "bodyzoom"),
             .dialogue(text: "Parece recente e sofrido.", img: "bodyzoom"),
@@ -55,13 +55,9 @@ struct GamePlayView: View {
             .dialogue(text: "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", img: "teke"),
             .dialogue(text: "[Sem ter tempo para raciocinar,\nvirei de costas e corri como se\nminha vida dependesse disso. E,\naparentemente, dependia.]", img: "teke"),
             .walk(text: "Correr", img: "bodyzoom", imgicon: "walkingleft"),
-            .dialogue(text: "[Me escondi atrás da primeira\npilastra que vi, tampando a\nboca para não chamar atenção\ncom minha respiração ofegante.]", img: "station4"),
-            .dialogue(text: "[Consigo escutar seu som\ncaracterístico por perto. Tenho\nque fazer silêncio agora.]", img: "station4sound"),
-            
-            //-------------------//
-            //ADD BREATH MINIGAME//
-            //------------------//
-            
+            .dialogue(text: "[Me escondi atrás da primeira\npilastra que vi, tampando a\nboca para não chamar atenção\ncom minha respiração ofegante.]", img: "station4"),    
+            .dialogue(text: "[Consigo escutar seu som\ncaracterístico por perto. Tenho\nque fazer silêncio agora.]", img: "station4sound"), 
+            .miniGames(gameType: .breath(img: "breathgame")),
             .dialogue(text: "[Acho que despistei por\nenquanto...]", img: "station4"),
             .dialogue(text: "[Devo voltar a correr agora\nantes que aquilo volte.]", img: "station4"),
             .walk(text: "Correr", img: "station4", imgicon: "walkingright"),
@@ -80,7 +76,7 @@ struct GamePlayView: View {
             .dialogue(text: "...", img: "black"),
             .dialogue(text: "Acho que espantei a criatura.\nEssa é minha chance de sair\ndaqui!", img: "black"),
             .dialogue(text: "[Corri em direção à saída\nentreaberta que achei nas\ncâmeras, passando pela abertura\ncom dificuldade.]", img: "black"),
-            .empty(img: "black"),
+            .empty(img: "black"), 
             .dialogue(text: "Finalmente...", img: "street"),
             .dialogue(text: "Escapei!!!", img: "street"),
             .dialogue(text: "Mas ainda não posso dar bobeira.", img: "street"),
@@ -106,7 +102,7 @@ struct GamePlayView: View {
     }
 }
 
-#Preview {
+#Preview { 
     GamePlayView()
 }
 

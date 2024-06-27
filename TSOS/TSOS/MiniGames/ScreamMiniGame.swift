@@ -16,6 +16,7 @@ struct ScreamGameView: View {
     @State private var errorCount = 0
     @State private var showJumpScare = false
     @State private var engine: CHHapticEngine?
+    @State private var shakeOffset: CGFloat = 0
     let img: String
     let updateBackgroundImage: (String) -> Void
     var goToNextScene: () -> Void
@@ -85,10 +86,10 @@ struct ScreamGameView: View {
             
         } .frame(width: 311, height: 560)
             .padding(.bottom, 88)
+            .offset(x: shakeOffset)
             .onAppear {
                 startAnimation()
                 updateBackgroundImage(img)
-                
             }
     }
     
@@ -129,6 +130,7 @@ struct ScreamGameView: View {
             startAnimation()
             prepareHaptics()
             wrongHaptics()
+            shakeScreen()
         }
     }
     
@@ -168,6 +170,19 @@ struct ScreamGameView: View {
             print("Failed to play haptic: \(error.localizedDescription)")
         }
     }
+    
+    func shakeScreen() {
+            let shakeAnimation = Animation.linear(duration: 0.02).repeatCount(10, autoreverses: true)
+            withAnimation(shakeAnimation) {
+                shakeOffset = 10
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(Animation.linear(duration: 0.02)) {
+                    shakeOffset = 0
+                }
+            }
+        }
+    
 }
 
 struct ArrowShape: Shape {

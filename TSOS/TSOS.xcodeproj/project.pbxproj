@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A12F4FD2C2255660084EA7C /* Dark Distance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A12F4FC2C2255660084EA7C /* Dark Distance.ttf */; };
 		6A12F4FF2C22E39E0084EA7C /* Jura.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A12F4FE2C22E39E0084EA7C /* Jura.ttf */; };
 		6A12F5012C22FA490084EA7C /* GamePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5002C22FA490084EA7C /* GamePlayView.swift */; };
 		6A12F5052C22FE480084EA7C /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5042C22FE480084EA7C /* GameSceneView.swift */; };
@@ -15,6 +14,8 @@
 		6A12F5252C2367EC0084EA7C /* WalkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5242C2367EC0084EA7C /* WalkScene.swift */; };
 		6A12F5272C2367FA0084EA7C /* LockerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5262C2367FA0084EA7C /* LockerScene.swift */; };
 		6A12F5292C2450BD0084EA7C /* EmptyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12F5282C2450BD0084EA7C /* EmptyScene.swift */; };
+		6A356AA22C2C402800879CE3 /* glitch.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6A356AA12C2C402800879CE3 /* glitch.mov */; };
+		6A356AA42C2C5D9A00879CE3 /* Dark Distance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A356AA32C2C5D9A00879CE3 /* Dark Distance.ttf */; };
 		6A464C4A2C1C572C0051C3C7 /* TSOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C492C1C572C0051C3C7 /* TSOSApp.swift */; };
 		6A464C4C2C1C572C0051C3C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C4B2C1C572C0051C3C7 /* ContentView.swift */; };
 		6A464C4E2C1C572E0051C3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A464C4D2C1C572E0051C3C7 /* Assets.xcassets */; };
@@ -26,10 +27,11 @@
 		6A464C6C2C1D14700051C3C7 /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A464C6B2C1D14700051C3C7 /* RecommendView.swift */; };
 		7364B81E2C278FCB00B7C807 /* ScreamMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */; };
 		7364B8202C27A0FC00B7C807 /* DoorMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */; };
+		C1846C142C2305C300D66E86 /* BreathMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1846C132C2305C300D66E86 /* BreathMiniGame.swift */; };
+		C1F1680F2C2C41B200A7D4CE /* DarkDistance.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1F1680E2C2C41B200A7D4CE /* DarkDistance.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6A12F4FC2C2255660084EA7C /* Dark Distance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dark Distance.ttf"; sourceTree = "<group>"; };
 		6A12F4FE2C22E39E0084EA7C /* Jura.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jura.ttf; sourceTree = "<group>"; };
 		6A12F5002C22FA490084EA7C /* GamePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayView.swift; sourceTree = "<group>"; };
 		6A12F5042C22FE480084EA7C /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
@@ -37,6 +39,8 @@
 		6A12F5242C2367EC0084EA7C /* WalkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkScene.swift; sourceTree = "<group>"; };
 		6A12F5262C2367FA0084EA7C /* LockerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerScene.swift; sourceTree = "<group>"; };
 		6A12F5282C2450BD0084EA7C /* EmptyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyScene.swift; sourceTree = "<group>"; };
+		6A356AA12C2C402800879CE3 /* glitch.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = glitch.mov; sourceTree = "<group>"; };
+		6A356AA32C2C5D9A00879CE3 /* Dark Distance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dark Distance.ttf"; sourceTree = "<group>"; };
 		6A464C462C1C572C0051C3C7 /* TSOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A464C492C1C572C0051C3C7 /* TSOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSOSApp.swift; sourceTree = "<group>"; };
 		6A464C4B2C1C572C0051C3C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +54,9 @@
 		6A464C6B2C1D14700051C3C7 /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreamMiniGame.swift; sourceTree = "<group>"; };
 		7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorMiniGame.swift; sourceTree = "<group>"; };
+		C1846C112C2300BF00D66E86 /* DarkDistance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DarkDistance.ttf; path = ../../../../../../Downloads/dark_distance/DarkDistance.ttf; sourceTree = "<group>"; };
+		C1846C132C2305C300D66E86 /* BreathMiniGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathMiniGame.swift; sourceTree = "<group>"; };
+		C1F1680E2C2C41B200A7D4CE /* DarkDistance.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DarkDistance.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +70,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A20B2B62C2C9A2300AC16B7 /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+				6A12F5262C2367FA0084EA7C /* LockerScene.swift */,
+				7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */,
+				C1846C132C2305C300D66E86 /* BreathMiniGame.swift */,
+				7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */,
+			);
+			path = MiniGames;
+			sourceTree = "<group>";
+		};
+		6A20B2B72C2C9A4A00AC16B7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6A12F5282C2450BD0084EA7C /* EmptyScene.swift */,
+				6A12F5242C2367EC0084EA7C /* WalkScene.swift */,
+				6A12F5222C2367E20084EA7C /* DialogueScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6A20B2B92C2C9A9400AC16B7 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				6A464C572C1C58090051C3C7 /* StartScreenView.swift */,
+				6A464C652C1CEF420051C3C7 /* WarningView.swift */,
+				6A464C6B2C1D14700051C3C7 /* RecommendView.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		6A20B2BA2C2C9AA300AC16B7 /* Screen Conection */ = {
+			isa = PBXGroup;
+			children = (
+				6A464C492C1C572C0051C3C7 /* TSOSApp.swift */,
+				6A464C4B2C1C572C0051C3C7 /* ContentView.swift */,
+				6A12F5042C22FE480084EA7C /* GameSceneView.swift */,
+				6A12F5002C22FA490084EA7C /* GamePlayView.swift */,
+			);
+			path = "Screen Conection";
+			sourceTree = "<group>";
+		};
 		6A464C3D2C1C572C0051C3C7 = {
 			isa = PBXGroup;
 			children = (
 				6A464C482C1C572C0051C3C7 /* TSOS */,
 				6A464C472C1C572C0051C3C7 /* Products */,
+				C1F167E02C2B0EF200A7D4CE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,23 +133,15 @@
 			isa = PBXGroup;
 			children = (
 				6A464C5A2C1C5A1D0051C3C7 /* Info.plist */,
-				6A464C492C1C572C0051C3C7 /* TSOSApp.swift */,
-				6A464C4B2C1C572C0051C3C7 /* ContentView.swift */,
-				6A464C572C1C58090051C3C7 /* StartScreenView.swift */,
-				6A12F5042C22FE480084EA7C /* GameSceneView.swift */,
-				6A12F5282C2450BD0084EA7C /* EmptyScene.swift */,
-				6A464C652C1CEF420051C3C7 /* WarningView.swift */,
-				6A12F5002C22FA490084EA7C /* GamePlayView.swift */,
-				6A464C6B2C1D14700051C3C7 /* RecommendView.swift */,
-				6A12F5262C2367FA0084EA7C /* LockerScene.swift */,
-				6A12F5242C2367EC0084EA7C /* WalkScene.swift */,
-				6A12F5222C2367E20084EA7C /* DialogueScene.swift */,
-				7364B81D2C278FCB00B7C807 /* ScreamMiniGame.swift */,
-				7364B81F2C27A0FC00B7C807 /* DoorMiniGame.swift */,
+				6A20B2BA2C2C9AA300AC16B7 /* Screen Conection */,
+				6A20B2B92C2C9A9400AC16B7 /* Intro */,
+				6A20B2B72C2C9A4A00AC16B7 /* Scenes */,
+				6A20B2B62C2C9A2300AC16B7 /* MiniGames */,
 				6A464C4D2C1C572E0051C3C7 /* Assets.xcassets */,
-				6A12F4FC2C2255660084EA7C /* Dark Distance.ttf */,
+				6A356AA12C2C402800879CE3 /* glitch.mov */,
 				6A464C5F2C1C5C6F0051C3C7 /* horroroid.ttf */,
 				6A12F4FE2C22E39E0084EA7C /* Jura.ttf */,
+				6A356AA32C2C5D9A00879CE3 /* Dark Distance.ttf */,
 				6A464C612C1C72750051C3C7 /* PressStart2P-Regular.ttf */,
 				6A464C4F2C1C572E0051C3C7 /* Preview Content */,
 			);
@@ -112,6 +154,15 @@
 				6A464C502C1C572E0051C3C7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C1F167E02C2B0EF200A7D4CE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C1846C112C2300BF00D66E86 /* DarkDistance.ttf */,
+				C1F1680E2C2C41B200A7D4CE /* DarkDistance.ttf */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,10 +225,12 @@
 			files = (
 				6A12F4FF2C22E39E0084EA7C /* Jura.ttf in Resources */,
 				6A464C512C1C572E0051C3C7 /* Preview Assets.xcassets in Resources */,
+				6A356AA42C2C5D9A00879CE3 /* Dark Distance.ttf in Resources */,
 				6A464C622C1C72750051C3C7 /* PressStart2P-Regular.ttf in Resources */,
 				6A464C602C1C5C6F0051C3C7 /* horroroid.ttf in Resources */,
-				6A12F4FD2C2255660084EA7C /* Dark Distance.ttf in Resources */,
+				C1F1680F2C2C41B200A7D4CE /* DarkDistance.ttf in Resources */,
 				6A464C4E2C1C572E0051C3C7 /* Assets.xcassets in Resources */,
+				6A356AA22C2C402800879CE3 /* glitch.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +250,7 @@
 				6A12F5012C22FA490084EA7C /* GamePlayView.swift in Sources */,
 				6A12F5272C2367FA0084EA7C /* LockerScene.swift in Sources */,
 				6A464C4C2C1C572C0051C3C7 /* ContentView.swift in Sources */,
+				C1846C142C2305C300D66E86 /* BreathMiniGame.swift in Sources */,
 				6A12F5292C2450BD0084EA7C /* EmptyScene.swift in Sources */,
 				6A12F5232C2367E20084EA7C /* DialogueScene.swift in Sources */,
 				7364B8202C27A0FC00B7C807 /* DoorMiniGame.swift in Sources */,
@@ -338,7 +392,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TSOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "The Sound Of Silence";
+				INFOPLIST_KEY_CFBundleDisplayName = TSOS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -370,7 +424,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TSOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "The Sound Of Silence";
+				INFOPLIST_KEY_CFBundleDisplayName = TSOS;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
