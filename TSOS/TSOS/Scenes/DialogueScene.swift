@@ -21,7 +21,7 @@ struct DialogueScene: View {
     var updateBackgroundImage: (String) -> Void
     @State private var engine: CHHapticEngine?
     @State private var timer: Timer?
-    
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -53,9 +53,9 @@ struct DialogueScene: View {
                             goToNextScene()
                         }
                     }
-                
+
                 Spacer()
-                
+
                 if showArrow {
                     Image(systemName: "arrowtriangle.right.fill")
                         .foregroundColor(.white)
@@ -65,6 +65,9 @@ struct DialogueScene: View {
                         .padding(.bottom, 14)
                         .onAppear {
                             animateArrow()
+                        }
+                        .onChange(of: showArrow) {
+                                animateArrow()
                         }
                 }
             }
@@ -76,7 +79,7 @@ struct DialogueScene: View {
             prepareHaptics()
             handleImageAppear()
         }
-        .onChange(of: img) { 
+        .onChange(of: img) {
             updateBackgroundImage(img)
             handleImageChange()
         }
@@ -84,7 +87,7 @@ struct DialogueScene: View {
             stopHapticLoop()
         }
     }
-    
+
     // MARK: - Image Handling
 
     private func handleImageAppear() {
@@ -99,7 +102,7 @@ struct DialogueScene: View {
             break
         }
     }
-    
+
     private func handleImageChange() {
         switch img {
         case "station2sound", "station4sound":
@@ -109,9 +112,9 @@ struct DialogueScene: View {
             stopHapticLoop()
         }
     }
-    
+
     // MARK: - Haptic Functions
-    
+
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         do {
@@ -121,19 +124,19 @@ struct DialogueScene: View {
             print("Haptic engine Start Error: \(error.localizedDescription)")
         }
     }
-    
+
     func startHapticLoop() {
         stopHapticLoop()
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
             tekeHaptics()
         }
     }
-    
+
     func stopHapticLoop() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     func tekeHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
@@ -144,7 +147,7 @@ struct DialogueScene: View {
         let event4 = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 1, duration: 0.1)
         playHaptics(events: [event1, event2, event3, event4])
     }
-    
+
     func scareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0)
@@ -152,7 +155,7 @@ struct DialogueScene: View {
         let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 1.5)
         playHaptics(events: [event])
     }
-    
+
     private func playHaptics(events: [CHHapticEvent]) {
         do {
             let pattern = try CHHapticPattern(events: events, parameters: [])

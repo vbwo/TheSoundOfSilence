@@ -29,6 +29,7 @@ struct GameSceneView: View {
     @State private var currentSceneIndex: Int = 0
     @State private var backgroundImg = ""
     @State private var isShowingText = false
+    @State private var isAnimating = false
     
     let scenes: [SceneType]
     
@@ -51,7 +52,7 @@ struct GameSceneView: View {
                         showArrow: $showArrow,
                         arrowOffset: $arrowOffset,
                         isShowingText: $isShowingText,
-                        showText: showText,
+                        showText: showText, 
                         animateArrow: animateArrow,
                         goToNextScene: goToNextScene,
                         updateBackgroundImage: updateBackgroundImage
@@ -128,6 +129,7 @@ struct GameSceneView: View {
                 timer.invalidate()
                 showArrow = true
                 isShowingText = false
+               
             }
         }
     }
@@ -138,9 +140,11 @@ struct GameSceneView: View {
         }
     }
     
+    
     func goToNextScene() {
         if currentSceneIndex < scenes.count - 1 {
             currentSceneIndex += 1
+            arrowOffset = 0
             let nextScene = scenes[currentSceneIndex]
             switch nextScene {
             case .dialogue(let text, let img):
@@ -156,7 +160,7 @@ struct GameSceneView: View {
                 case .locker(let img):
                     updateBackgroundImage(img)
                 case .scream(let img):
-                    updateBackgroundImage(img)
+                    updateBackgroundImage(img) 
                 case .breath(let img):
                     updateBackgroundImage(img)
                 case .door(let img):

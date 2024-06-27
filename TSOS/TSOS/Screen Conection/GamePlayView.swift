@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GamePlayView: View {
     var body: some View {
-        GameSceneView(scenes: [
+        GameSceneView(scenes: [ 
             .dialogue(text: "Droga! Perdi o último metrô...", img: "station1"),
             .dialogue(text: "Agora já era. Vou sair daqui\ne tentar a sorte de passar um\ntáxi.", img: "station1"),
             .walk(text: "Andar", img: "station1", imgicon: "walkingleft"),
@@ -22,7 +22,7 @@ struct GamePlayView: View {
             .empty(img: "lightsoff1"),
             .dialogue(text: "Mas o que...", img: "lightsoff2"),
             .dialogue(text: "O que está acontecendo?", img: "lightsoff2"),
-            .empty(img: "station1"),
+            .empty(img: "station1"), 
             .dialogue(text: "Ok, isso foi esquisito...", img: "station1"),
             .dialogue(text: "Talvez seja um bom sinal… Alguém\ndeve estar trabalhando por aqui\nainda.", img: "station1"),
             .dialogue(text: "Mas não adianta ficar imaginando\ncoisas. Vou andar um pouco para\nprocurar.", img: "station1"),
@@ -76,7 +76,7 @@ struct GamePlayView: View {
             .dialogue(text: "...", img: "black"),
             .dialogue(text: "Acho que espantei a criatura.\nEssa é minha chance de sair\ndaqui!", img: "black"),
             .dialogue(text: "[Corri em direção à saída\nentreaberta que achei nas\ncâmeras, passando pela abertura\ncom dificuldade.]", img: "black"),
-            .empty(img: "black"),
+            .empty(img: "black"), 
             .dialogue(text: "Finalmente...", img: "street"),
             .dialogue(text: "Escapei!!!", img: "street"),
             .dialogue(text: "Mas ainda não posso dar bobeira.", img: "street"),
