@@ -92,11 +92,8 @@ struct GamePlayView: View {
             .dialogue(text: "[Curvei meu corpo para fora da\ncama, a fim de alcançá-lo.]", img: "bluebook"),
             .dialogue(text: "...", img: "bluebook"),
             .dialogue(text: "Mas o que...", img: "book1"),
-            
-            //---------------//
-            //FINAL JUMPSCARE//
-            //--------------//
-            
+            .empty(img: "finalscene1"),
+            .empty(img: "finalscene2"),
             .empty(img: "gameover")
         ])
     }
